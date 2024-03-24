@@ -4,41 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Street</title>
-<style>
-  body {
-    background-color: #222;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-  }
-  #counter {
-    font-size: 3em;
-    margin-bottom: 20px;
-  }
-  #coin {
-    width: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: moveCoin 5s infinite linear;
-  }
-  @keyframes moveCoin {
-    0% { top: 50%; left: 50%; }
-    50% { top: 70%; left: 70%; }
-    100% { top: 50%; left: 50%; }
-  }
-</style>
+<link rel="stylesheet" href="assets/styles/styles.css">
 </head>
-<body onclick="increaseCounter()">
+<body ontouchstart="increaseCounter()">
   <h1>New Street</h1>
   <div id="counter">0</div>
-  <img id="coin" src="coin.png" alt="Coin">
+  <img id="coin" src="assets/images/coin.png" alt="Coin">
   
   <script>
     let count = 0;
@@ -79,4 +50,3 @@
   </script>
 </body>
 </html>
-
