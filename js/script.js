@@ -1,3 +1,13 @@
+window.Telegram = {
+  WebApp: {
+    setFullscreen: function () {
+      window.parent.postMessage({type: 'setFullscreen'}, '*');
+    }
+  }
+};
+
+Telegram.WebApp.setFullscreen();
+
 let count = 0;
 
 function increaseCounter() {
