@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Street</title>
+<style>
+  body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  #counter {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  #coin {
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moveCoin 5s infinite linear;
+  }
+  @keyframes moveCoin {
+    0% { top: 50%; left: 50%; }
+    50% { top: 70%; left: 70%; }
+    100% { top: 50%; left: 50%; }
+  }
+</style>
+</head>
+<body onclick="increaseCounter()">
+  <h1>New Street</h1>
+  <div id="counter">0</div>
+  <img id="coin" src="coin.png" alt="Coin">
+  
+  <script>
+    let count = 0;
+    
+    function increaseCounter() {
+      count++;
+      document.getElementById("counter").textContent = count;
+    }
+    
+    const coin = document.getElementById("coin");
+    const bodyWidth = document.body.clientWidth;
+    const bodyHeight = document.body.clientHeight;
+    const coinWidth = coin.clientWidth;
+    const coinHeight = coin.clientHeight;
+    let coinX = bodyWidth / 2 - coinWidth / 2;
+    let coinY = bodyHeight / 2 - coinHeight / 2;
+    let coinDX = 5;
+    let coinDY = 5;
+    
+    function moveCoin() {
+      coinX += coinDX;
+      coinY += coinDY;
+      
+      if (coinX <= 0 || coinX >= bodyWidth - coinWidth) {
+        coinDX = -coinDX;
+      }
+      if (coinY <= 0 || coinY >= bodyHeight - coinHeight) {
+        coinDY = -coinDY;
+      }
+      
+      coin.style.left = coinX + "px";
+      coin.style.top = coinY + "px";
+      
+      requestAnimationFrame(moveCoin);
+    }
+    
+    moveCoin();
+  </script>
+</body>
+</html>
+
