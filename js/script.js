@@ -1,12 +1,4 @@
-window.Telegram = {
-  WebApp: {
-    setFullscreen: function () {
-      window.parent.postMessage({type: 'setFullscreen'}, '*');
-    }
-  }
-};
-
-Telegram.WebApp.setFullscreen();
+window.Telegram.WebApp.expand()
 
 let count = 0;
 
@@ -22,13 +14,14 @@ const coinWidth = coin.clientWidth;
 const coinHeight = coin.clientHeight;
 let coinX = bodyWidth / 2 - coinWidth / 2;
 let coinY = bodyHeight / 2 - coinHeight / 2;
-let coinDX = 5;
-let coinDY = 5;
+let coinDX = Math.random() < 0.5 ? -2 : 2; // Случайное начальное направление по горизонтали
+let coinDY = Math.random() < 0.5 ? -2 : 2; // Случайное начальное направление по вертикали
 
 function moveCoin() {
   coinX += coinDX;
   coinY += coinDY;
 
+  // Отскок от краев экрана
   if (coinX <= 0 || coinX >= bodyWidth - coinWidth) {
     coinDX = -coinDX;
   }
